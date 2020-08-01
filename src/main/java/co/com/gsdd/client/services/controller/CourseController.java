@@ -7,13 +7,15 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.discovery.EurekaClient;
 
+import co.com.gsdd.client.services.model.Course;
+
 @RestController
 @RequestMapping("courses")
 public class CourseController extends AbstractBaseController {
 	
 	@Autowired
 	public CourseController(EurekaClient client, RestTemplate restTemplate) {
-		super(client, restTemplate);
+		super(client, restTemplate, Course.class);
 	}
 
 	@Override

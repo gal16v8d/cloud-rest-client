@@ -7,13 +7,15 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.discovery.EurekaClient;
 
+import co.com.gsdd.client.services.model.User;
+
 @RestController
 @RequestMapping("users")
 public class UserController extends AbstractBaseController {
 
 	@Autowired
 	public UserController(EurekaClient client, RestTemplate restTemplate) {
-		super(client, restTemplate);
+		super(client, restTemplate, User.class);
 	}
 
 	@Override

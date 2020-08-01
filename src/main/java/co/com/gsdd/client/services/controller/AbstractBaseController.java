@@ -7,16 +7,16 @@ import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
-import co.com.gsdd.client.services.model.Course;
-
 public abstract class AbstractBaseController {
 	
 	private final EurekaClient client;
 	private final RestTemplate restTemplate;
+	private final Class<?> clazz;
 	
-	public AbstractBaseController(EurekaClient client, RestTemplate restTemplate) {
+	public AbstractBaseController(EurekaClient client, RestTemplate restTemplate, Class<?> clazz) {
 		this.client = client;
 		this.restTemplate = restTemplate;
+		this.clazz = clazz;
 	}
 	
 	public abstract String getApplicationName();
@@ -41,6 +41,6 @@ public abstract class AbstractBaseController {
 	@HystrixCommand(fallbackMethod = "fallbackGetFirst")
 	public String getFirstCourse() {
 		String rootUrl = getClientInstanceInfo().getHomePageUrl();
-		return getFirstMsg() + restTemplate.getForObject(rootUrl + getControllerRoute() + "/1", Course.class);
+		return getFirstMsg() + restTemplate.getForObject(rootUrl + getControllerRoute() + "/1", clazz);
 	}
 }
