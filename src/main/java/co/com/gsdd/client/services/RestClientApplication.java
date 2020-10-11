@@ -15,8 +15,6 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan
 public class RestClientApplication {
 
-	public static final String BASE_PACKAGE = "co.com.gsdd.client.services";
-
 	public static void main(String[] args) {
 		SpringApplication.run(RestClientApplication.class, args);
 	}
