@@ -5,9 +5,9 @@ import lombok.Generated;
 
 @Generated
 @Data
-public class User {
+public class Level {
 
-    private String userId;
-    private String userName;
+    private String levelId;
+    private String name;
 
 }

@@ -20,5 +20,5 @@ The following guides illustrate how to use some features concretely:
 
 ### Notes
 This works as a cloud rest client using eureka clients.
-This project is related to fx-course-app and fx-user-app
+This project is related to fx-course-app and dw2-svc
 For properly run this also needs the eureka-server

@@ -7,45 +7,45 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.discovery.EurekaClient;
 
-import co.com.gsdd.client.services.model.User;
+import co.com.gsdd.client.services.model.Level;
 
 @RestController
-@RequestMapping("users")
-public class UserController extends AbstractBaseController {
+@RequestMapping("levels")
+public class LevelController extends AbstractBaseController {
 
 	@Autowired
-	public UserController(EurekaClient client, RestTemplate restTemplate) {
-		super(client, restTemplate, User.class);
+	public LevelController(EurekaClient client, RestTemplate restTemplate) {
+		super(client, restTemplate, Level.class);
 	}
 
 	@Override
 	public String getApplicationName() {
-		return "fx-user-app";
+		return "dw2-svc";
 	}
 
 	@Override
 	public String getControllerRoute() {
-		return "/users";
+		return "/v1/levels";
 	}
 
 	@Override
 	public String getAllMsg() {
-		return "Our users are: ";
+		return "Our levels are: ";
 	}
 
 	@Override
 	public String getFirstMsg() {
-		return "Our first user is: ";
+		return "Our first level is: ";
 	}
 
 	@Override
 	public String fallbackGetAll() {
-		return "Can not render our users in this moment";
+		return "Can not render our levels in this moment";
 	}
 
 	@Override
 	public String fallbackGetFirst() {
-		return "Can not render our first user in this moment";
+		return "Can not render our first level in this moment";
 	}
 
 }
