@@ -1,4 +1,4 @@
-package co.com.gsdd.client.services;
+package com.gsdd.client.services;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,13 +15,13 @@ import org.springframework.web.client.RestTemplate;
 @ComponentScan
 public class RestClientApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(RestClientApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(RestClientApplication.class, args);
+  }
 
-	@Bean
-	public RestTemplate restTemplate(RestTemplateBuilder builder) {
-		return builder.build();
-	}
+  @Bean
+  public RestTemplate restTemplate(RestTemplateBuilder builder) {
+    return builder.build();
+  }
 
 }
