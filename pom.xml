@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.gsdd</groupId>
 	<artifactId>cloud-rest-client</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.001</version>
 	<name>cloud-rest-client</name>
 	<description>Spring Boot demo project for rest consumption</description>
 
@@ -98,7 +98,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${mvn.surefire.plugin.version}</version>
+				<version>${mvn.surefire.plugin.version}</version><!--$NO-MVN-MAN-VER$-->
 				<configuration>
 					<!-- Sets the VM argument line used when unit tests are run. -->
 					<argLine>${surefireArgLine}</argLine>
@@ -113,7 +113,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${mvn.failsafe.plugin.version}</version>
+				<version>${mvn.failsafe.plugin.version}</version><!--$NO-MVN-MAN-VER$-->
 				<executions>
 					<execution>
 						<id>integration-tests</id>
@@ -190,6 +190,7 @@
 				<version>${mvn.format.plugin.version}</version>
 				<configuration>
 					<configFile>${project.basedir}/eclipse-java-google-style.xml</configFile>
+					<lineEnding>CRLF</lineEnding>
 				</configuration>
 				<executions>
 					<execution>
