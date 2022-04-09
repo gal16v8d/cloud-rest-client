@@ -6,21 +6,21 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.6.1</version>
+		<version>2.6.6</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gsdd</groupId>
 	<artifactId>cloud-rest-client</artifactId>
-	<version>1.0.001</version>
+	<version>2.0.1</version>
 	<name>cloud-rest-client</name>
 	<description>Spring Boot demo project for rest consumption</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		
 		<mvn.jacoco.plugin.version>0.8.7</mvn.jacoco.plugin.version>
-		<mvn.failsafe.plugin.version>3.0.0-M4</mvn.failsafe.plugin.version>
-		<mvn.surefire.plugin.version>3.0.0-M4</mvn.surefire.plugin.version>
+		<mvn.failsafe.plugin.version>3.0.0-M5</mvn.failsafe.plugin.version>
+		<mvn.surefire.plugin.version>3.0.0-M5</mvn.surefire.plugin.version>
 		<mvn.format.plugin.version>2.10.0</mvn.format.plugin.version>
 		
 		<!-- If true skips UT test execution -->
@@ -35,7 +35,7 @@
 		<jacoco.it.reportPath>${project.build.directory}/coverage-reports/jacoco-it</jacoco.it.reportPath>
 		
 		<swagger.version>3.0.0</swagger.version>
-		<spring-cloud.version>2021.0.0</spring-cloud.version>
+		<spring-cloud.version>2021.0.1</spring-cloud.version>
 		<spring.cloud.hystrix.version>2.2.10.RELEASE</spring.cloud.hystrix.version>
 	</properties>
 
