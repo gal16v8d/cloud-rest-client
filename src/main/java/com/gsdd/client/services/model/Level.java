@@ -7,7 +7,6 @@ import lombok.Generated;
 @Data
 public class Level {
 
-  private String levelId;
-  private String name;
-
+    private String levelId;
+    private String name;
 }
