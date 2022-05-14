@@ -11,38 +11,38 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("courses")
 public class CourseController extends AbstractBaseController {
 
-    @Autowired
-    public CourseController(EurekaClient client, RestTemplate restTemplate) {
-        super(client, restTemplate, Course.class);
-    }
+  @Autowired
+  public CourseController(EurekaClient client, RestTemplate restTemplate) {
+    super(client, restTemplate, Course.class);
+  }
 
-    @Override
-    public String getApplicationName() {
-        return "fx-course-app";
-    }
+  @Override
+  public String getApplicationName() {
+    return "fx-course-app";
+  }
 
-    @Override
-    public String getControllerRoute() {
-        return "/courses";
-    }
+  @Override
+  public String getControllerRoute() {
+    return "/courses";
+  }
 
-    @Override
-    public String getAllMsg() {
-        return "Our courses are: ";
-    }
+  @Override
+  public String getAllMsg() {
+    return "Our courses are: ";
+  }
 
-    @Override
-    public String getFirstMsg() {
-        return "Our first course is: ";
-    }
+  @Override
+  public String getFirstMsg() {
+    return "Our first course is: ";
+  }
 
-    @Override
-    public String fallbackGetAll() {
-        return "Can not render our courses in this moment";
-    }
+  @Override
+  public String fallbackGetAll() {
+    return "Can not render our courses in this moment";
+  }
 
-    @Override
-    public String fallbackGetFirst() {
-        return "Can not render our first course in this moment";
-    }
+  @Override
+  public String fallbackGetFirst() {
+    return "Can not render our first course in this moment";
+  }
 }

@@ -7,6 +7,6 @@ import lombok.Generated;
 @Data
 public class Course {
 
-    private String courseId;
-    private String courseName;
+  private String courseId;
+  private String courseName;
 }
