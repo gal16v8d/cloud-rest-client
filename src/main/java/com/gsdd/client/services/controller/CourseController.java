@@ -25,24 +25,4 @@ public class CourseController extends AbstractBaseController {
   public String getControllerRoute() {
     return "/courses";
   }
-
-  @Override
-  public String getAllMsg() {
-    return "Our courses are: ";
-  }
-
-  @Override
-  public String getFirstMsg() {
-    return "Our first course is: ";
-  }
-
-  @Override
-  public String fallbackGetAll() {
-    return "Can not render our courses in this moment";
-  }
-
-  @Override
-  public String fallbackGetFirst() {
-    return "Can not render our first course in this moment";
-  }
 }

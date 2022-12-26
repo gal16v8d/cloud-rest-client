@@ -25,24 +25,4 @@ public class LevelController extends AbstractBaseController {
   public String getControllerRoute() {
     return "/v1/levels";
   }
-
-  @Override
-  public String getAllMsg() {
-    return "Our levels are: ";
-  }
-
-  @Override
-  public String getFirstMsg() {
-    return "Our first level is: ";
-  }
-
-  @Override
-  public String fallbackGetAll() {
-    return "Can not render our levels in this moment";
-  }
-
-  @Override
-  public String fallbackGetFirst() {
-    return "Can not render our first level in this moment";
-  }
 }

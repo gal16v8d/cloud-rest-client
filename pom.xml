@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.6</version>
+		<version>3.0.0</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.gsdd</groupId>
@@ -32,14 +30,14 @@
 
 		<checkstyle.version>10.1</checkstyle.version>
 
-		<spring-cloud.version>2021.0.5</spring-cloud.version>
-		<spring.cloud.hystrix.version>2.2.10.RELEASE</spring.cloud.hystrix.version>
+		<spring-cloud.version>2022.0.0</spring-cloud.version>
+		<springdoc.openapi.ui.version>2.0.2</springdoc.openapi.ui.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -50,9 +48,17 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-			<version>${spring.cloud.hystrix.version}</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.resilience4j</groupId>
+			<artifactId>resilience4j-spring-boot2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>${springdoc.openapi.ui.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -112,7 +118,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>${mvn.surefire.plugin.version}</version><!--$NO-MVN-MAN-VER$ -->
+				<version>${mvn.surefire.plugin.version}</version> <!--$NO-MVN-MAN-VER$ -->
 				<configuration>
 					<skipTests>${skip.unit.tests}</skipTests>
 					<!-- Excludes integration tests when unit tests are run. -->
@@ -125,7 +131,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>${mvn.failsafe.plugin.version}</version><!--$NO-MVN-MAN-VER$ -->
+				<version>${mvn.failsafe.plugin.version}</version> <!--$NO-MVN-MAN-VER$ -->
 				<executions>
 					<execution>
 						<id>integration-tests</id>
@@ -249,9 +255,9 @@
 					<!-- define a language-specific format -->
 					<java>
 						<eclipse>
-                            <version>4.21.0</version>
-                            <file>${project.basedir}/config/eclipse-google-formatter.xml</file>
-                        </eclipse>
+							<version>4.21.0</version>
+							<file>${project.basedir}/config/eclipse-google-formatter.xml</file>
+						</eclipse>
 						<importOrder>
 							<file>${project.basedir}/config/formatter.importorder</file>
 						</importOrder>
