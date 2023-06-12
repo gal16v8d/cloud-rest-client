@@ -22,7 +22,7 @@ public class RestClientApplication {
   }
 
   @Bean
-  public RestTemplate restTemplate(RestTemplateBuilder builder) {
+  RestTemplate restTemplate(RestTemplateBuilder builder) {
     return builder.build();
   }
 }
