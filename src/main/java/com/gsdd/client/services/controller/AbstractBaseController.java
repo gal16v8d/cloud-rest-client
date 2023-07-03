@@ -6,35 +6,30 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @RequiredArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class AbstractBaseController {
 
+  private static final String ALL_MSG = "Our %ss are: %s";
+  private static final String ALL_ERROR_MSG = "Can not render our %ss in this moment: %s";
+  private static final String FIRST_MSG = "Our first %s is: %s";
+  private static final String FIRST_ERROR_MSG = "Can not render our first %s in this moment";
+
   private final EurekaClient client;
-  private final RestTemplate restTemplate;
+  private final WebClient.Builder restClient;
   private final Class<?> clazz;
 
   public abstract String getApplicationName();
 
   public abstract String getControllerRoute();
 
-  public String getAllMsg() {
-    return "Our %ss are: ".formatted(this.clazz.getSimpleName().toLowerCase());
-  }
-
-  public String getFirstMsg() {
-    return "Our first %s is: ".formatted(this.clazz.getSimpleName().toLowerCase());
-  }
-
   public String fallbackGetAll(Exception e) {
-    return "Can not render our %ss in this moment: %s"
-        .formatted(this.clazz.getSimpleName().toLowerCase(), e.getMessage());
+    return ALL_ERROR_MSG.formatted(this.clazz.getSimpleName().toLowerCase(), e.getMessage());
   }
 
   public String fallbackGetFirst() {
-    return "Can not render our first %s in this moment"
-        .formatted(this.clazz.getSimpleName().toLowerCase());
+    return FIRST_ERROR_MSG.formatted(this.clazz.getSimpleName().toLowerCase());
   }
 
   public InstanceInfo getClientInstanceInfo() {
@@ -45,13 +40,27 @@ public abstract class AbstractBaseController {
   @CircuitBreaker(name = "getAll", fallbackMethod = "fallbackGetAll")
   public String getAll() {
     String rootUrl = getClientInstanceInfo().getHomePageUrl();
-    return getAllMsg() + restTemplate.getForObject(rootUrl + getControllerRoute(), String.class);
+    String result = restClient.baseUrl(rootUrl)
+        .build()
+        .get()
+        .uri(getControllerRoute())
+        .retrieve()
+        .bodyToMono(String.class)
+        .block();
+    return ALL_MSG.formatted(this.clazz.getSimpleName().toLowerCase(), result);
   }
 
   @GetMapping("/first")
   @CircuitBreaker(name = "getFirst", fallbackMethod = "fallbackGetFirst")
   public String getFirst() {
     String rootUrl = getClientInstanceInfo().getHomePageUrl();
-    return getFirstMsg() + restTemplate.getForObject(rootUrl + getControllerRoute() + "/1", clazz);
+    Object result = restClient.baseUrl(rootUrl)
+        .build()
+        .get()
+        .uri(getControllerRoute() + "/1")
+        .retrieve()
+        .bodyToMono(clazz)
+        .block();
+    return FIRST_MSG.formatted(this.clazz.getSimpleName().toLowerCase(), result.toString());
   }
 }
