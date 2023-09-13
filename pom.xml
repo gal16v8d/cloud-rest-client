@@ -32,6 +32,7 @@
 
 		<spring-cloud.version>2022.0.4</spring-cloud.version>
 		<springdoc.openapi.ui.version>2.1.0</springdoc.openapi.ui.version>
+		<spring.admin.client.version>3.1.6</spring.admin.client.version>
 	</properties>
 
 	<dependencies>
@@ -52,6 +53,10 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-config</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
@@ -63,6 +68,11 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>${springdoc.openapi.ui.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>${spring.admin.client.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
